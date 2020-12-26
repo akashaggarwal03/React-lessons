@@ -1,27 +1,8 @@
-import logo from './logo.svg';
-// import Radium ,{StyleRoot} from 'radium';
-import './App.css';
+import classes from './App.module.css';
 import Person from './Person/Person';
 import { Component } from 'react';
-import styled from 'styled-components';
 
 
-
-const StyledButton= styled.button`
-
-      background-color:${props=> props.alt ? 'red' : 'green'};
-      color:white;
-      cursor:pointer;
-      padding:16px;
-      border: 1px solid blue;
-       font:inherit;
-      &:hover{
-        background-color:${props=> props.alt ? 'yellow' : 'salmon'};
-        color:black;
-      }
-
-
-`;
 
 class App extends Component {
 
@@ -74,20 +55,8 @@ ShowPersonHandler = ()=>{
   render(){
 
     let morePersons=null;
-
-    const style= {
-      backgroundColor:'green',
-       color:'white',
-      cursor:'pointer',
-      padding:'8px',
-      border: '1px solid blue',
-      font:'inherit',
-      ':hover':{
-        backgroundColor:'lightgreen',
-        color:'black'
-      }
-    
-    };
+    let btnClasses=[classes.Button];
+   
 
     if(this.state.showPerson)
     {
@@ -112,33 +81,30 @@ ShowPersonHandler = ()=>{
   
         </div>
       );
+          btnClasses.push(classes.Red);
 
-      // style.backgroundColor='red'
-      // style[':hover']={
-      //   backgroundColor:'salmon',
-      //   color:'black'
-      // }
+      
     }
 
-    let classes=[];
+    let assignedclasses=[];
 
     if(this.state.persons.length<=2)
     {
-      classes.push('red');
+      assignedclasses.push(classes.red);
     }
 
     if(this.state.persons.length<=1)
     {
-      classes.push('bold');
+      assignedclasses.push(classes.bold);
     }
   return (
 
     
-    <div className="App">
-      <StyledButton alt={this.state.showPerson} onClick= {this.ShowPersonHandler}>
+    <div className={classes.App}>
+      <button className= {btnClasses.join(' ')} onClick= {this.ShowPersonHandler}>
         Show All persons
-          </StyledButton>
-      <p className={classes.join(' ')}>
+          </button>
+      <p className={assignedclasses.join(' ')}>
       This is working</p>
     {morePersons}
     </div>
