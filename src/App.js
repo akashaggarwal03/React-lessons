@@ -19,6 +19,8 @@ class App extends Component {
     showPerson:false
   }
 
+
+ 
   deletePersonHandler = (personIndex)=>{
     const newPersons=[...this.state.persons];
     newPersons.splice(personIndex,1);
@@ -26,6 +28,7 @@ class App extends Component {
       persons:newPersons
     })
   }
+
 NameChangeHandler = (Index,event)=> {
 
   

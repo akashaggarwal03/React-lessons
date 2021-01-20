@@ -8,7 +8,11 @@ const Cockpit = (props)=> {
       setTimeout(()=>{
         alert('Data Saved');
       },1000);
-    },[]);
+
+      return ()=>{
+        console.log('[Cockpit.js] cleanup rendering');
+      };
+    },[props.persons]);
   
   
   
