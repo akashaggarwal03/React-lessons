@@ -1,10 +1,20 @@
 import classes from './App.module.css';
-import Person from './Person/Person';
+import Person from '../components/Persons/Persons';
 import { Component } from 'react';
-
+import Cockpit from '../components/Cockpit/Cockpit';
 
 
 class App extends Component {
+
+
+  constructor(props)
+  {
+    super(props);
+    console.log('[App.js] cosnstructor is fired up!');
+
+    /* this.state=
+    */
+  }
 
   state = {
 
@@ -55,57 +65,33 @@ ShowPersonHandler = ()=>{
   render(){
 
     let morePersons=null;
-    let btnClasses=[classes.Button];
-   
-
+    
     if(this.state.showPerson)
     {
       morePersons= (
   
         <div>
-
-          {this.state.persons.map((Ele,Index) =>{
-
-            return <Person
-
-              click={this.deletePersonHandler.bind(this,Index)}
-              name={Ele.name}
-              age={Ele.age}
-              key={Ele.ID}
-              //NameChange= {(event)=>this.NameChangeHandler(event,Index)}
-              NameChange= {this.NameChangeHandler.bind(this,Index)}
-              
-            />
-          })
-          }
+          <Person
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.NameChangeHandler}
+          />
   
         </div>
       );
-          btnClasses.push(classes.Red);
-
-      
     }
 
-    let assignedclasses=[];
-
-    if(this.state.persons.length<=2)
-    {
-      assignedclasses.push(classes.red);
-    }
-
-    if(this.state.persons.length<=1)
-    {
-      assignedclasses.push(classes.bold);
-    }
+    
   return (
 
     
     <div className={classes.App}>
-      <button className= {btnClasses.join(' ')} onClick= {this.ShowPersonHandler}>
-        Show All persons
-          </button>
-      <p className={assignedclasses.join(' ')}>
-      This is working</p>
+      <Cockpit
+      title={this.props.appTitle}
+        showPersons={this.state.showPerson}
+        persons={this.state.persons}
+        ShowPersonHandler={this.ShowPersonHandler}
+      />
     {morePersons}
     </div>
     
