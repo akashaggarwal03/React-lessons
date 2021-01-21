@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
-import './Person.css';
+import classes from './Person.module.css';
 import Auxillary from '../../../HOC/Auxillary';
-
+import withClass from '../../../HOC/withClass';
 
 class Person extends Component {
 
@@ -15,11 +15,7 @@ class Person extends Component {
                     <p>{this.props.children}</p>
                     <input  type="text"  onChange= {this.props.NameChange} value={this.props.name} />
                 </Auxillary>
-                
-
-
-            
-                
+           
   
         )
     }
@@ -28,4 +24,4 @@ class Person extends Component {
    
 };
 
-export default Person;
+export default withClass(Person,classes.Person);
