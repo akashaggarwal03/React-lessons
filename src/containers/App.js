@@ -4,7 +4,7 @@ import { Component } from 'react';
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../HOC/withClass';
 import Auxillary from '../HOC/Auxillary';
-
+import AuthContext from '../context/auth-context';
 class App extends Component {
 
 
@@ -92,8 +92,9 @@ LoginBtnHandler = ()=> {
   return (
 
     
-    <Auxillary>
-      <Cockpit
+      <Auxillary>
+        <AuthContext.Provider value ={{authenticated:this.state.Authenticated ,login:this.LoginBtnHandler}}>
+        <Cockpit
       title={this.props.appTitle}
         showPersons={this.state.showPerson}
         personslength={this.state.persons.length}
@@ -101,7 +102,13 @@ LoginBtnHandler = ()=> {
         login={this.LoginBtnHandler}
       />
     {morePersons}
+
+        </AuthContext.Provider>
+      
     </Auxillary>
+
+
+    
     
   )
 }
