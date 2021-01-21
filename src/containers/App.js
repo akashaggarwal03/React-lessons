@@ -89,7 +89,7 @@ ShowPersonHandler = ()=>{
       <Cockpit
       title={this.props.appTitle}
         showPersons={this.state.showPerson}
-        persons={this.state.persons}
+        personslength={this.state.persons.length}
         ShowPersonHandler={this.ShowPersonHandler}
       />
     {morePersons}

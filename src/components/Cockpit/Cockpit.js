@@ -12,9 +12,13 @@ const Cockpit = (props)=> {
       return ()=>{
         console.log('[Cockpit.js] cleanup rendering');
       };
-    },[props.persons]);
+    },[props.personslength]);
   
-  
+    useEffect(()=>{
+      return ()=>{
+        console.log('[Cockpit.js] cleanup 2nd Use Effect rendering');
+      };
+    });
   
   
     let btnClass='';
@@ -28,12 +32,12 @@ const Cockpit = (props)=> {
 
     let assignedclasses=[];
 
-    if(props.persons.length<=2)
+    if(props.personslength<=2)
     {
       assignedclasses.push(classes.red);
     }
 
-    if(props.persons.length<=1)
+    if(props.personslength<=1)
     {
       assignedclasses.push(classes.bold);
     }
@@ -55,4 +59,4 @@ const Cockpit = (props)=> {
     );
 }
 
-export default Cockpit;
+export default React.memo(Cockpit);
