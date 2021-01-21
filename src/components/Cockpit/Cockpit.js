@@ -1,18 +1,21 @@
-import React, {useEffect} from  'react';
+import React, {useEffect,useRef} from  'react';
 import classes from './Cockpit.module.css';
 
 const Cockpit = (props)=> {
     
+  const togglebtnref= useRef(null);
+
     useEffect(()=>{
       
-      setTimeout(()=>{
-        alert('Data Saved');
-      },1000);
+      // setTimeout(()=>{
+      //   alert('Data Saved');
+      // },1000);
 
+      togglebtnref.current.click();
       return ()=>{
         console.log('[Cockpit.js] cleanup rendering');
       };
-    },[props.personslength]);
+    },[]);
   
     useEffect(()=>{
       return ()=>{
@@ -46,7 +49,9 @@ const Cockpit = (props)=> {
         
         <div className={classes.Cockpit}>
             <h1>{props.title}</h1>
-            <button className= {btnClass} 
+            <button
+             ref={togglebtnref}
+             className= {btnClass} 
             onClick= {props.ShowPersonHandler}>
             Show All persons
             </button>
