@@ -9,13 +9,13 @@ class Person extends Component {
     {
         console.log('[Person.js] rendering . .. ')
         return (
-            <div>
-                <p onClick={this.props.click}>This is a {this.props.name}!! And he is {this.props.age} years old</p>
-                <p>{this.props.children}</p>
-                <input type="text"  onChange= {this.props.NameChange} value={this.props.name} />
+            
+                [<p key="1A" onClick={this.props.click}>This is a {this.props.name}!! And he is {this.props.age} years old</p>,
+                <p key="1B">{this.props.children}</p>,
+                <input key="1C" type="text"  onChange= {this.props.NameChange} value={this.props.name} />]
 
 
-            </div>
+            
                 
   
         )
