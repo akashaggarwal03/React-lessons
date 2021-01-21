@@ -2,7 +2,8 @@ import classes from './App.module.css';
 import Person from '../components/Persons/Persons';
 import { Component } from 'react';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../HOC/WithClass';
+import withClass from '../HOC/withClass';
+import Auxillary from '../HOC/Auxillary';
 
 class App extends Component {
 
@@ -85,7 +86,7 @@ ShowPersonHandler = ()=>{
   return (
 
     
-    <WithClass classes={classes.App}>
+    <Auxillary>
       <Cockpit
       title={this.props.appTitle}
         showPersons={this.state.showPerson}
@@ -93,10 +94,10 @@ ShowPersonHandler = ()=>{
         ShowPersonHandler={this.ShowPersonHandler}
       />
     {morePersons}
-    </WithClass>
+    </Auxillary>
     
   )
 }
 }
 
-export default App;
+export default withClass(App,classes.App);
