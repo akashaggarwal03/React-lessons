@@ -1,4 +1,4 @@
-import React, {useEffect,useRef} from  'react';
+import React, {useEffect,useRef,useContext} from  'react';
 import classes from './Cockpit.module.css';
 import AuthContext from '../../context/auth-context';
 
@@ -6,6 +6,7 @@ const Cockpit = (props)=> {
     
   const togglebtnref= useRef(null);
 
+  const authContext= useContext(AuthContext);
     useEffect(()=>{
       
       // setTimeout(()=>{
@@ -56,12 +57,8 @@ const Cockpit = (props)=> {
             onClick= {props.ShowPersonHandler}>
             Show All persons
             </button>
-            <AuthContext.Consumer>
-              {(context)=> <button onClick= {context.login}>Login</button>
-              }
-            </AuthContext.Consumer>
-            
-            
+            <button onClick= {authContext.login}>Login
+              </button>
             <p className={assignedclasses.join(' ')}>
             This is working
             </p>
