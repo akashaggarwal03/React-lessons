@@ -55,6 +55,7 @@ const Cockpit = (props)=> {
             onClick= {props.ShowPersonHandler}>
             Show All persons
             </button>
+            <button onClick= {props.login}>Login</button>
             
             <p className={assignedclasses.join(' ')}>
             This is working

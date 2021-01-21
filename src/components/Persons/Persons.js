@@ -47,6 +47,7 @@ class Persons extends Component {
                 key={Ele.ID}
                 //NameChange= {(event)=>this.NameChangeHandler(event,Index)}
                 NameChange= {this.props.changed.bind(this,Index)}
+                auth={this.props.auth}
               
               />
             ); 

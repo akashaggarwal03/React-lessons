@@ -27,7 +27,8 @@ class App extends Component {
     ],
 
     otherstateVariable:"somevalue",
-    showPerson:false
+    showPerson:false,
+    Authenticated:false
   }
 
   deletePersonHandler = (personIndex)=>{
@@ -61,7 +62,11 @@ ShowPersonHandler = ()=>{
     showPerson:!doesShow
   });
 }
-
+LoginBtnHandler = ()=> {
+  this.setState({
+    Authenticated:true
+  });
+}
 
   render(){
 
@@ -76,6 +81,7 @@ ShowPersonHandler = ()=>{
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
           changed={this.NameChangeHandler}
+          auth={this.state.Authenticated}
           />
   
         </div>
@@ -92,6 +98,7 @@ ShowPersonHandler = ()=>{
         showPersons={this.state.showPerson}
         personslength={this.state.persons.length}
         ShowPersonHandler={this.ShowPersonHandler}
+        login={this.LoginBtnHandler}
       />
     {morePersons}
     </Auxillary>
